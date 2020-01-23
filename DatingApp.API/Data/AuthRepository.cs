@@ -23,10 +23,10 @@ namespace DatingApp.API.Data
 
             if (PasswοrdVerified(password, user.PasswordHash, user.PasswordSalt) == false)
             {
-
+                return null;
             }
 
-            throw new System.NotImplementedException();
+            return user;
         }
 
         private bool PasswοrdVerified(string password, byte[] passwordHash, byte[] passwordSalt)
@@ -65,7 +65,6 @@ namespace DatingApp.API.Data
                 passwordSalt = hmac.Key;
                 passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
             }
-            throw new NotImplementedException();
         }
 
         public async Task<bool> UserExists(string username)
